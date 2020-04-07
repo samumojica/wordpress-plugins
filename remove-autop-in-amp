@@ -1,0 +1,11 @@
+//REMOVE AUTO P ONLY ON HOMEPAGE AMP
+function goku_filter_content_autop($content) {
+  //change home for whatever you need
+	if(is_amp_endpoint() && is_home()) {
+		$removeautop = remove_filter( 'the_content', 'wpautop' );
+		$new_content = $removeautop;
+		$content .= $new_content;
+	}	
+	return $content;
+}
+add_filter('the_content', 'goku_filter_content_autop');
